@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * ONE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  `   |
+ * |  `   |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  -   |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | ESC  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  | Bspc |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * | FOUR | LEFT | DOWN |RIGHT | End  |      |-------.    ,-------|      |      |      |      |   [  |  ]   |
  * |------+------+------+------+------+------|  Caps |    |       |------+------+------+------+------+------|
- * |THREE |      |      |      |      |      |-------|    |-------|      |      |      |      |   `  |  \   |
+ * |THREE |      |      |      |      |      |-------|    |-------|      |      |      |      |      |  \   |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *            |      |      | Trns |      | /       /       \      \  |      |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -62,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_SYSTEM_SLEEP, KC_F1,     KC_F2,    KC_F3,      KC_F4,     KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_EQL,
   LT(_FIVE,KC_BSPC),          KC_PGUP,   KC_UP,    KC_PGDOWN,  KC_HOME,   XXXXXXX,                    XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_F11,  KC_F12,  KC_DEL,
   LT(_FOUR,KC_ENT),       KC_LEFT,   KC_DOWN,  KC_RIGHT,   KC_END,    XXXXXXX,                    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LBRC,  KC_RBRC,
-  MO(_THREE),      XXXXXXX,    XXXXXXX,   XXXXXXX,     XXXXXXX,    XXXXXXX, KC_CAPS,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_GRV,  KC_BSLS,
+  MO(_THREE),      XXXXXXX,    XXXXXXX,   XXXXXXX,     XXXXXXX,    XXXXXXX, KC_CAPS,   XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSLS,
                  XXXXXXX,XXXXXXX,KC_TRNS,XXXXXXX, XXXXXXX,      XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 /* THREE (L DIA + L SHIFT)
@@ -80,14 +80,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *            `----------------------------------'            '------''---------------------------'
  */
 [_THREE] = LAYOUT(
-  XXXXXXX, XXXXXXX,        XXXXXXX,       XXXXXXX,         XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         LSFT_T(KC_EQL),
+  XXXXXXX, XXXXXXX,        XXXXXXX,       XXXXXXX,         XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         KC_PLUS,
   XXXXXXX, KC_WBAK,        LCTL(KC_UP),   KC_WFWD,         KC_WREF, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,         XXXXXXX,
-  XXXXXXX, LCTL(KC_LEFT),  LCTL(KC_DOWN), LCTL(KC_RIGHT),  XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LSFT_T(KC_LBRC), LSFT_T(KC_RBRC),
-  XXXXXXX, XXXXXXX,        XXXXXXX,       XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, LSFT_T(KC_GRV),  LSFT_T(KC_BSLS),
+  XXXXXXX, LCTL(KC_LEFT),  LCTL(KC_DOWN), LCTL(KC_RIGHT),  XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_LCBR, KC_RCBR,
+  XXXXXXX, XXXXXXX,        XXXXXXX,       XXXXXXX,         XXXXXXX, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_PIPE,
                            XXXXXXX,       XXXXXXX,         KC_TRNS, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 /* FOUR (L DIA + TAB)
- * ,----------------------------------------.                    ,-----------------------------------------.
+ * ,----------------------------------------.                     ,-----------------------------------------.
  * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      | Mute |Vol Up| Play |      |      |                    |      |      |      |      |      |      |
@@ -102,31 +102,31 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_FOUR] = LAYOUT(
   XXXXXXX, XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX , XXXXXXX,                           XXXXXXX,  XXXXXXX  , XXXXXXX,  XXXXXXX ,  XXXXXXX ,XXXXXXX,
-  XXXXXXX,  KC_MUTE,  KC_VOLU,   KC_MPLY,  XXXXXXX, XXXXXXX,                        XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,XXXXXXX, XXXXXXX,
-  XXXXXXX, KC_MPRV,  KC_VOLD,  KC_MNXT,  XXXXXXX, XXXXXXX,                       XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX,
+  XXXXXXX,  KC_MUTE,  KC_VOLU,   KC_MPLY,  XXXXXXX, XXXXXXX,                        KC_WH_U, XXXXXXX,   KC_MS_UP, XXXXXXX,XXXXXXX, XXXXXXX,
+  XXXXXXX, KC_MPRV,  KC_VOLD,  KC_MNXT,  XXXXXXX, XXXXXXX,                       KC_WH_D,  KC_MS_L, KC_MS_D, KC_MS_R,  XXXXXXX, XXXXXXX,
   XXXXXXX,XXXXXXX, KC_BRIU, KC_BRID, XXXXXXX, XXXXXXX,  XXXXXXX,       XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX,
-                         XXXXXXX, XXXXXXX, KC_TRNS, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                         XXXXXXX, XXXXXXX, KC_TRNS, XXXXXXX, XXXXXXX,       KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX
 ),
 /* FIVE (L DIA + ESC)
  * ,-----------------------------------------.                    ,-----------------------------------------.
  * |      |Light |Mode +|Hue + |Sat + |Brite+|                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * | TRNS |      |Mode -|Hue - |Sat - |Brite-|                    |      |      |      |      |      |      |
+ * | TRNS |      |Mode -|Hue - |Sat - |Brite-|                    |ScrolU|      |MouseU|      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      | VOLDO| MUTE | VOLUP|      |      |
+ * |      |      |      |      |      |      |-------.    ,-------|ScrolD|MouseL|MouseD|MouseR|      |      |
  * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      | PREV | PLAY | NEXT |      |      |
+ * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
- *            |      |      | Trns |      | /       /       \      \  |      |      |      |      |
+ *            |      |      |      |      | /       /       \ Clck \  |RClck |      |      |      |
  *            |      |      |      |      |/       /         \      \ |      |      |      |      |
  *            `----------------------------------'           '------''---------------------------'
  */
   [_FIVE] = LAYOUT(
   XXXXXXX , RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAD,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  KC_TRNS , XXXXXXX, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAI,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX,                     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+  KC_TRNS , XXXXXXX, RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAI,                     KC_WH_D, XXXXXXX, KC_MS_UP, XXXXXXX, XXXXXXX, XXXXXXX,
+  XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX,                     KC_WH_U, KC_MS_L, KC_MS_D, KC_MS_R, XXXXXXX, XXXXXXX,
   XXXXXXX , XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX,  XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX
   )
 };
 
